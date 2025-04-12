@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Curso Laravel Livewire</title>
     @livewireStyles
+    @vite('resources/css/app.css')
 </head>
 
 <body>
