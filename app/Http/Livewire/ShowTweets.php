@@ -7,7 +7,11 @@ use App\Models\Tweet;
 
 class ShowTweets extends Component
 {
-    public $message = 'Frase foda';
+    public $content = 'Frase foda';
+
+    protected $rules = [
+        'content' => 'required|min:3|max:255',
+    ];
 
     public function render()
     {
@@ -18,15 +22,15 @@ class ShowTweets extends Component
 
     public function create()
     {
-        // dd($this->message);
+        $this->validate();
 
         Tweet::create(
             [
-                'content' => $this->message,
+                'content' => $this->content,
                 'user_id' => 1,
             ]
         );
 
-        $this->message = '';
+        $this->content = '';
     }
 }
