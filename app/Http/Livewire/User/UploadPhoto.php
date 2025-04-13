@@ -4,11 +4,13 @@ namespace App\Http\Livewire\User;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
+use App\Models\User;
 
 class UploadPhoto extends Component
 {
     use WithFileUploads;
-    
+
     public $photo;
 
     public function render()
@@ -16,12 +18,24 @@ class UploadPhoto extends Component
         return view('livewire.user.upload-photo');
     }
 
+
     public function storagePhoto()
     {
         $this->validate([
-            'photo' => 'required|image|max:1024|mimes:jpg,jpeg,png,webp',
+            'photo' => 'required|image|max:1024',
         ]);
 
-        dd($this->photo);
+        $user = auth()->user();
+
+        $nameFile = Str::slug($user->name) . '.' . $this->photo->getClientOriginalExtension();
+
+        if ($path = $this->photo->storeAs('users', $nameFile, 'public')) {
+            $user->update([
+                'profile_photo_path' => $path
+            ]);
+        }
+
+
+        return redirect(route('tweets.index'));
     }
 }

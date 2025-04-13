@@ -6,14 +6,18 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                        {{-- <x-application-mark class="block h-9 w-auto" /> --}}
+                        <img src="https://avatars.githubusercontent.com/u/51960834?s=400&v=4" alt="Logo" class="block h-9 w-auto">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="{{ route('tweets.index') }}" :active="request()->routeIs('tweets.index')">
+                        {{ __('Tweets') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('upload.photo.user') }}" :active="request()->routeIs('upload.photo.user')">
+                        {{ __('Upload Foto') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -139,8 +143,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link href="{{ route('tweets.index') }}" :active="request()->routeIs('tweets.index')">
+                {{ __('Tweets') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('upload.photo.user') }}" :active="request()->routeIs('uploads.photo.user')">
+                {{ __('Upload Foto') }}
             </x-responsive-nav-link>
         </div>
 
