@@ -11,7 +11,7 @@ class ShowTweets extends Component
 {
     use WithPagination;
 
-    public $content = 'Frase foda';
+    public $content = 'Olá comunidade!';
 
     protected $rules = [
         'content' => 'required|min:3|max:255',
