@@ -1,52 +1,69 @@
+# Me aprofundando em Livewire
 
-# Setup Docker Laravel 11 com PHP 8.3
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+> Este repositório foi criado com base no **Curso Gratuito de Laravel Livewire** disponível no YouTube.  
+> A ideia é replicar e testar os conceitos aprendidos, utilizando um ambiente Docker com Laravel 11 e PHP 8.3.
 
-### Passo a passo
-Clone Repositório
+**Playlist do Curso no YouTube**: [Curso Gratuito de Laravel Livewire](https://youtube.com/playlist?list=PLVSNL1PHDWvTH6zKPGTfxEdpv1sN0VbeV&si=P7nFmq_-nmi9LPJN)
+
+**Repositório Oficial do Conteúdo do Curso**: [especializati/laravel-livewire](https://github.com/especializati/laravel-livewire)
+
+---
+
+## Como rodar este projeto localmente
+
+### 1. Clone o repositório base
+
 ```sh
-git clone -b laravel-12-with-php8.4 https://github.com/especializati/setup-docker-laravel.git app-laravel
+git clone https://github.com/gustavogordoni/introduction_livewire.git livewire
+cd livewire
 ```
+
+### 2. Suba os containers com Docker
+
 ```sh
-cd app-laravel
+docker compose up -d
 ```
 
-Suba os containers do projeto
-```sh
-docker-compose up -d
-```
+### 3. Configure o ambiente
 
-
-Crie o Arquivo .env
 ```sh
 cp .env.example .env
 ```
 
-Acesse o container app
+### 4. Acesse o container da aplicação
+
 ```sh
-docker-compose exec app bash
+docker compose exec app bash
 ```
 
+### 5. Instale as dependências
 
-Instale as dependências do projeto
 ```sh
 composer install
 ```
 
-Gere a key do projeto Laravel
+### 6. Gere a chave da aplicação
+
 ```sh
 php artisan key:generate
 ```
 
-OPCIONAL: Gere o banco SQLite (caso não use o banco MySQL)
-```sh
-touch database/database.sqlite
-```
+### 7. Rode as migrations
 
-Rodar as migrations
 ```sh
 php artisan migrate
 ```
 
-Acesse o projeto
+### 8. Rode as seeds
+
+```sh
+php artisan db:seed
+```
+
+---
+
+## Acesse o projeto
+
 [http://localhost:8000](http://localhost:8000)
+
+---
